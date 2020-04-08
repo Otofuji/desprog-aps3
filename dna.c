@@ -60,5 +60,27 @@ int mlcs(char a[], int n, char b[], int m) {
 
 int dlcs(char a[], int n, char b[], int m) {
 
-  return 2;
+  int c, d, length[MAX_SIZE+1][MAX_SIZE+1];
+
+  
+  if (n == 0 || m == 0) {
+    length[n][m] = 0;
+    
+    }
+  
+  else if (a[n-1] == b[m-1]) {
+
+    length[n][m] = length[n-1][m-1] + 1;
+  
+  }
+
+  else {
+    
+    c = length[n-1][m];
+    d = length[n][m-1];
+
+    if (c >= d) {length[n][m] = c;}
+    else        {length[n][m] = d;}
+  }
+  return length[n][m];
 }
